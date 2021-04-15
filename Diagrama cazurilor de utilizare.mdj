@@ -19021,7 +19021,7 @@
 									"hostEdge": {
 										"$ref": "AAAAAAF4i9waEOzMdYM="
 									},
-									"text": "+bug-uri alese"
+									"text": "+bug-uri _alese"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -19732,16 +19732,16 @@
 										"$ref": "AAAAAAF4i/1iG/yxdlk="
 									},
 									"font": "Arial;13;0",
-									"left": 718,
+									"left": 716,
 									"top": 503,
-									"width": 104.4189453125,
+									"width": 108.037109375,
 									"height": 13,
 									"alpha": -1.3142798463330299,
 									"distance": 63.06346010171025,
 									"hostEdge": {
 										"$ref": "AAAAAAF4i/1iHPyzfJQ="
 									},
-									"text": "+bug-uri rezolvate"
+									"text": "+bug-uri_rezolvate"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -20772,7 +20772,7 @@
 								"_parent": {
 									"$ref": "AAAAAAF4i9waD+zINCs="
 								},
-								"name": "bug-uri alese",
+								"name": "bug-uri _alese",
 								"reference": {
 									"$ref": "AAAAAAF4i9gV9uYfoqY="
 								},
@@ -20803,7 +20803,7 @@
 								"_parent": {
 									"$ref": "AAAAAAF4i/1iG/yvPH4="
 								},
-								"name": "bug-uri rezolvate",
+								"name": "bug-uri_rezolvate",
 								"reference": {
 									"$ref": "AAAAAAF4i9gV9uYfoqY="
 								},
