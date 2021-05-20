@@ -1,0 +1,5 @@
+rootProject.name = 'Project'
+include 'Model'
+include 'Persistence'
+include 'ClientFX'
+

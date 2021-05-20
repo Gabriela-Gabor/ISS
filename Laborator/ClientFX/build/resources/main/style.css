@@ -1,0 +1,10 @@
+#anchor{
+    -fx-background-color: linear-gradient(to bottom,#4dffdb,#ccffcc);
+}
+
+#buttonLogin{
+    -fx-background-color: #e6fffa;
+}
+#button{
+    -fx-background-color:  #e6fffa;
+}
