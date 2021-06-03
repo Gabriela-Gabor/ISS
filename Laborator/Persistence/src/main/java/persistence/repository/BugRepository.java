@@ -2,6 +2,7 @@ package persistence.repository;
 
 import model.Bug;
 
+import model.StatusType;
 import observer.Observable;
 import observer.Observer;
 import org.hibernate.Session;
@@ -11,6 +12,7 @@ import persistence.IRepository;
 
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 public class BugRepository implements IRepository<String, Bug>, Observable {
 
@@ -36,7 +38,7 @@ public class BugRepository implements IRepository<String, Bug>, Observable {
             } catch (RuntimeException ex) {
                 if (tx != null) {
                     tx.rollback();
-                    ;
+
                 }
             }
         }
@@ -115,8 +117,34 @@ public class BugRepository implements IRepository<String, Bug>, Observable {
 
     @Override
     public void update(Bug entity) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                session.update(entity);
+                tx.commit();
+                notifyObservers();
+            } catch (RuntimeException ex) {
+                if (tx != null) {
+                    tx.rollback();
 
+                }
+            }
+        }
     }
+
+    public List<Bug> getFinishedBugs()
+    {
+        List<Bug> bugs=findAll().stream().filter(x->x.getStatusType()== StatusType.Finished).collect(Collectors.toList());
+        return bugs;
+    }
+
+    public List<Bug> getUnfinishedBugs()
+    {
+        List<Bug> bugs=findAll().stream().filter(x->x.getStatusType()!= StatusType.Finished).collect(Collectors.toList());
+        return bugs;
+    }
+
 
     @Override
     public void addObserver(Observer e) {

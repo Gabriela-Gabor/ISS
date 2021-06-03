@@ -10,11 +10,11 @@
 <AnchorPane fx:id="anchor" prefHeight="420.0" prefWidth="561.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DeveloperController">
    <children>
       <ListView fx:id="bugsListView" layoutX="28.0" layoutY="110.0" prefHeight="200.0" prefWidth="200.0" />
-      <Button id="button" fx:id="chooseButton" layoutX="88.0" layoutY="319.0" mnemonicParsing="false" text="CHOOSE">
+      <Button id="button" fx:id="chooseButton" layoutX="88.0" layoutY="319.0" mnemonicParsing="false" onAction="#chooseBug" text="CHOOSE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button id="button" fx:id="solvedButton" layoutX="356.0" layoutY="241.0" mnemonicParsing="false" stylesheets="@style.css" text="SOLVED">
+      <Button id="button" fx:id="solvedButton" layoutX="320.0" layoutY="226.0" mnemonicParsing="false" onAction="#solveBug" stylesheets="@style.css" text="MARK AS SOLVED">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
@@ -23,7 +23,7 @@
             <Font name="System Bold" size="16.0" />
          </font></Label>
       <TextField fx:id="descriptionTextField" layoutX="295.0" layoutY="165.0" prefHeight="31.0" prefWidth="200.0" />
-      <Button id="button" fx:id="viewFinishedButton" layoutX="437.0" layoutY="369.0" mnemonicParsing="false" stylesheets="@style.css" text="View finished">
+      <Button id="button" fx:id="viewFinishedButton" layoutX="437.0" layoutY="369.0" mnemonicParsing="false" onAction="#getFinished" stylesheets="@style.css" text="View finished">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

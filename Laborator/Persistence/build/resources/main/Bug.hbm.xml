@@ -21,5 +21,8 @@
         <property
                 name="SolutionDescription"
                 column="SolutionDescription"/>
+        <property
+                name="AssignedDeveloper"
+                column="AssignedDeveloper"/>
     </class>
 </hibernate-mapping>

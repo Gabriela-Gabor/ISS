@@ -54,7 +54,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
             AnchorPane root = loader.load();
             LoginController ctrl = loader.getController();
-            ctrl.initiateLoginProcedure(stage,developerRepository,testerRepository,bugRepository);
+            ctrl.initiateLoginProcedure(developerRepository,testerRepository,bugRepository);
             stage.setScene(new Scene(root, 420, 400));
             stage.show();
 

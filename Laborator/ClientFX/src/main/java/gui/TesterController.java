@@ -31,54 +31,68 @@ public class TesterController implements Observer {
 
     public void initiate(Tester tester, BugRepository bugRepository) {
 
-        this.curentUser=tester;
+        this.curentUser = tester;
         this.bugRepository = bugRepository;
         this.bugRepository.addObserver(this);
         getBugs();
 
     }
 
-    private void getBugs()
-    {
+    private void getBugs() {
         bugsListView.setItems(modelBug);
         try {
-           modelBug.setAll(bugRepository.findAll());
+            modelBug.setAll(bugRepository.getUnfinishedBugs());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void saveBug(ActionEvent actionEvent) {
-        String name=nameTextField.getText();
-        String description=descriptionTextField.getText();
-        if(name!="" && description!="")
-        {
-            Bug bug=new Bug(name,description);
+        String name = nameTextField.getText();
+        String description = descriptionTextField.getText();
+        if (name != "" && description != "") {
+            Bug bug = new Bug(name, description);
             bugRepository.save(bug);
             nameTextField.clear();
             descriptionTextField.clear();
 
-        }
-        else{
-            MessageAlert.showWarningMessage(null,"Please enter a name and description!");
+        } else {
+            MessageAlert.showWarningMessage(null, "Please enter a name and description!");
         }
     }
 
     public void deleteBug(ActionEvent actionEvent) {
 
-        Bug bug= (Bug) bugsListView.getSelectionModel().getSelectedItem();
+        Bug bug = (Bug) bugsListView.getSelectionModel().getSelectedItem();
         if (bug != null) {
             bugRepository.delete(bug.getName());
-            modelBug.setAll(bugRepository.findAll());
         } else {
-            MessageAlert.showWarningMessage(null, "Nu am selectat");
+            MessageAlert.showWarningMessage(null, "Please select a bug from the list");
 
         }
     }
 
+    public void updateBug(ActionEvent actionEvent) {
+
+        Bug bug = (Bug) bugsListView.getSelectionModel().getSelectedItem();
+        if (bug != null) {
+            String description = descriptionTextField.getText();
+            if (!description.equals("")) {
+                bug.setDescription(description);
+                bugRepository.update(bug);
+                descriptionTextField.clear();
+            } else {
+                MessageAlert.showWarningMessage(null, "Please enter a description");
+            }
+        } else {
+            MessageAlert.showWarningMessage(null, "Please select a bug from the list");
+
+        }
+
+    }
 
     @Override
     public void update() {
-        modelBug.setAll(bugRepository.findAll());
+        modelBug.setAll(bugRepository.getUnfinishedBugs());
     }
 }

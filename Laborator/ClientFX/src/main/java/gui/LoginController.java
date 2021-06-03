@@ -25,7 +25,6 @@ public class LoginController {
     private DeveloperRepository developerRepository;
     private TesterRepository testerRepository;
     private BugRepository bugRepository;
-    private Stage stageMain;
 
     @FXML
     TextField usernameTextField;
@@ -34,8 +33,7 @@ public class LoginController {
     PasswordField passwordTextField;
 
 
-    public void initiateLoginProcedure(Stage stageMain,DeveloperRepository developerRepository,TesterRepository testerRepository,BugRepository bugRepository){
-        this.stageMain = stageMain;
+    public void initiateLoginProcedure(DeveloperRepository developerRepository,TesterRepository testerRepository,BugRepository bugRepository){
         this.developerRepository = developerRepository;
         this.testerRepository = testerRepository;
         this.bugRepository=bugRepository;
@@ -59,10 +57,12 @@ public class LoginController {
 
                         Stage stage = new Stage();
                         stage.setTitle("Window for " + developer.getName());
-                        stage.setScene(new Scene(root, 600, 350));
+                        stage.setScene(new Scene(root, 600, 430));
 
-                        //stageMain.close();
+
                         stage.show();
+                        usernameTextField.clear();
+                        passwordTextField.clear();
 
                     } catch (Exception ex) {
                         MessageAlert.showWarningMessage(null, "Error");
